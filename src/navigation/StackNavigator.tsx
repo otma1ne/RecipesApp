@@ -3,14 +3,15 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 // Import navigators and screens
 import DrawerNavigator from './DrawerNavigator';
-/* import {AuthContext} from '../context/AuthContext'; */ // Adjust the path as necessary
 import LoginScreen from '../screens/login/LoginScreen';
 import DetailScreen from '../screens/detail/DetailScreen';
+import OnboardingScreen from '../screens/onboarding/OnboardingScreen';
+import {AuthContext} from '../context/AuthContext';
 
 const Stack = createStackNavigator();
 
 export default function StackNavigator() {
-  const isAuthenticated: boolean = true;
+  const {isAuthenticated} = useContext(AuthContext);
 
   return (
     <Stack.Navigator>
@@ -29,12 +30,19 @@ export default function StackNavigator() {
           />
         </>
       ) : (
-        // If not authenticated, show the login screen
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{headerShown: false}}
-        />
+        // If not authenticated, show the onboarding screen or login screen
+        <>
+          <Stack.Screen
+            name="Onboarding"
+            component={OnboardingScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{headerShown: false}}
+          />
+        </>
       )}
     </Stack.Navigator>
   );

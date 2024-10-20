@@ -55,38 +55,21 @@ export default {
     flexShrink: 1,
   },
 
-  textMedium19: {
-    fontSize: 19,
+  text14: {
+    fontSize: 14,
     fontFamily: fonts.regular,
+    lineHeight: 22,
   },
 
-  textMedium17: {
-    fontSize: 17,
-    fontFamily: fonts.regular,
+  text14Medium: {
+    fontSize: 14,
+    fontFamily: fonts.medium,
+    lineHeight: 22,
   },
 
-  textMedium23: {
-    fontSize: 23,
-    fontFamily: fonts.regular,
-  },
-
-  textSemiBold21: {
-    fontSize: 21,
-    fontFamily: fonts.bold,
-  },
-
-  cta20: {
-    fontSize: 20,
-    fontFamily: fonts.regular,
-  },
-
-  bodyE16: {
-    fontSize: 16,
-    fontFamily: fonts.bold,
-  },
-
-  title14Bold: {
+  text14Bold: {
     fontSize: 14,
     fontFamily: fonts.bold,
+    lineHeight: 22,
   },
 };
