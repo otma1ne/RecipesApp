@@ -105,8 +105,8 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   itemText: {
-    fontSize: 18,
-    fontFamily: fonts.regular,
+    fontSize: 16,
+    fontFamily: fonts.medium,
     color: colors.black,
   },
 });

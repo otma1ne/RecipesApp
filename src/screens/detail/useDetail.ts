@@ -35,6 +35,12 @@ const useDetail = (route: any) => {
 
   const handleSaveRecipe = (item: Recipe) => {
     dispatch(saveRecipe(item));
+
+    Alert.alert(
+      'Recipe Saved',
+      `${item.name} has been added to your saved recipes.`,
+      [{text: 'OK'}],
+    );
   };
 
   useEffect(() => {
