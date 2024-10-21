@@ -50,7 +50,7 @@ export default function StackNavigator() {
           <Stack.Screen
             name="Detail"
             component={DetailScreen}
-            options={{title: 'Product Details', headerShown: false}}
+            options={{title: 'Product Details'}}
           />
         </>
       ) : (

@@ -13,18 +13,21 @@ export default function SavedScreen() {
     <ScrollView contentContainerStyle={styles.body}>
       <Text style={styles.title}>Saved Recipes</Text>
       <View style={styles.listContainer}>
-        {savedItems.map((recipe: Recipe) => (
-          <SavecRecipeCard
-            id={recipe.id}
-            image={recipe.image}
-            name={recipe.name}
-            difficulty={recipe.difficulty}
-            cookTimeMinutes={recipe.cookTimeMinutes}
-            onRemoveRecipe={() => {
-              handleUnsaveRecipe(recipe.id);
-            }}
-          />
-        ))}
+        {savedItems.length > 0 ? (
+          savedItems.map((recipe: Recipe) => (
+            <SavecRecipeCard
+              key={recipe.id}
+              id={recipe.id}
+              image={recipe.image}
+              name={recipe.name}
+              difficulty={recipe.difficulty}
+              cookTimeMinutes={recipe.cookTimeMinutes}
+              onRemoveRecipe={() => handleUnsaveRecipe(recipe.id)}
+            />
+          ))
+        ) : (
+          <Text style={styles.noItemsText}>No saved recipes yet.</Text>
+        )}
       </View>
     </ScrollView>
   );
@@ -32,6 +35,8 @@ export default function SavedScreen() {
 
 const styles = StyleSheet.create({
   body: {
+    flex: 1,
+    backgroundColor: colors.white,
     padding: constants.padding,
   },
   title: {
@@ -44,5 +49,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
+  },
+  noItemsText: {
+    fontSize: 16,
+    fontFamily: fonts.regular,
+    color: colors.grey,
+    textAlign: 'center',
+    marginTop: 80,
   },
 });

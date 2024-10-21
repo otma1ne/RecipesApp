@@ -33,9 +33,11 @@ export type Recipe = {
 
 const useHome = (navigation: any) => {
   const categories: Category[] = [
-    {id: 1, name: 'Soup', image: assets.logo},
-    {id: 2, name: 'Seafood', image: assets.logo},
-    {id: 3, name: 'Sushi', image: assets.logo},
+    {id: 1, name: 'Soup', image: assets.soup},
+    {id: 2, name: 'Seafood', image: assets.crevette},
+    {id: 3, name: 'Sushi', image: assets.sushi},
+    {id: 4, name: 'Soup', image: assets.soup},
+    {id: 5, name: 'Seafood', image: assets.crevette},
   ];
 
   const chefs: Chef[] = [

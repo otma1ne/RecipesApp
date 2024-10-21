@@ -4,7 +4,8 @@ const imagesPath = basePath + '/images';
 
 export default {
   // Icons
-  /* socials_fb: require(`${iconsPath}/socials_fb.png`), */
+  google: require(`${iconsPath}/google.svg`),
+  apple: require(`${iconsPath}/apple.svg`),
 
   // Images
   logo: require(`${imagesPath}/logo.jpg`),
@@ -13,4 +14,9 @@ export default {
   chef1: require(`${imagesPath}/chef1.jpg`),
   chef2: require(`${imagesPath}/chef2.webp`),
   chef3: require(`${imagesPath}/chef3.jpg`),
+
+  soup: require(`${imagesPath}/soup.png`),
+  crevette: require(`${imagesPath}/crevette.png`),
+  sushi: require(`${imagesPath}/sushi.png`),
+
 };

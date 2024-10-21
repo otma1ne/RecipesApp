@@ -1,16 +1,16 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, ViewStyle, TextStyle} from 'react-native';
-import Ionicons from 'react-native-vector-icons/FontAwesome5';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../theme/colors';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 type IconButtonProps = {
-  icon: string;
+  icon?: string;
   onPress: () => void;
   size?: number;
   color?: string;
   style?: ViewStyle;
   iconStyle?: TextStyle;
+  children?: React.ReactNode;
 };
 
 const IconButton = ({
@@ -20,6 +20,7 @@ const IconButton = ({
   color = '#fff',
   style,
   iconStyle,
+  children,
   ...props
 }: IconButtonProps) => {
   return (
@@ -27,12 +28,10 @@ const IconButton = ({
       style={[styles.button, style]}
       onPress={onPress}
       {...props}>
-      <FontAwesome5Icon
-        name={icon}
-        size={size}
-        color={color}
-        style={iconStyle}
-      />
+      {icon && (
+        <Ionicons name={icon} size={size} color={color} style={iconStyle} />
+      )}
+      {children}
     </TouchableOpacity>
   );
 };

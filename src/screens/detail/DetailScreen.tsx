@@ -104,6 +104,7 @@ export default function DetailScreen({route, navigation}: any) {
 const styles = StyleSheet.create({
   body: {
     padding: constants.padding,
+    backgroundColor: colors.white,
   },
   imageContainer: {
     position: 'relative',
@@ -192,6 +193,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   button: {
-    margin: constants.padding,
+    backgroundColor: colors.white,
+    padding: constants.padding,
   },
 });

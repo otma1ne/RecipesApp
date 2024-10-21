@@ -57,7 +57,7 @@ export default function OnboardingScreen() {
         <IconButton
           icon="chevron-forward-outline"
           onPress={handleNextStep}
-          size={24}
+          size={20}
           color="white"
         />
       </View>

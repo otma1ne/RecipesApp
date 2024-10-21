@@ -8,6 +8,9 @@ import CustomTextInput from '../../components/CustomTextInput';
 import IconButton from '../../components/IconButton';
 import useLogin from './useLogin';
 
+import Google from '../../assets/icons/google.svg';
+import Apple from '../../assets/icons/apple.svg';
+
 export default function LoginScreen() {
   const {username, password, loading, handleLogin, setUsername, setPassword} =
     useLogin();
@@ -17,7 +20,8 @@ export default function LoginScreen() {
       <View style={styles.formContainer}>
         <Text style={styles.title}>Login</Text>
         <Text style={styles.text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing.
+          Log in to access your saved recipes or sign in with a social account
+          below.
         </Text>
         <View style={styles.form}>
           <CustomTextInput
@@ -37,18 +41,14 @@ export default function LoginScreen() {
         </View>
       </View>
       <View style={styles.actionsButton}>
-        <CustomButton title="Login" onPress={handleLogin} />
+        <CustomButton title="Login" onPress={handleLogin} loading={loading} />
         <View style={styles.actionsButtonRow}>
-          <IconButton
-            style={styles.iconButton}
-            icon="google"
-            onPress={() => {}}
-          />
-          <IconButton
-            style={styles.iconButton}
-            icon="apple1"
-            onPress={() => {}}
-          />
+          <IconButton style={styles.iconButton} onPress={() => {}}>
+            <Google width={24} />
+          </IconButton>
+          <IconButton style={styles.iconButton} onPress={() => {}}>
+            <Apple width={24} />
+          </IconButton>
         </View>
       </View>
     </View>
