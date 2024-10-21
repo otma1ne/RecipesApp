@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+    backgroundColor: colors.white,
   },
   loadingText: {
     marginTop: 8,

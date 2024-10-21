@@ -53,7 +53,7 @@ const useHome = (navigation: any) => {
 
   const fetchRecipes = async () => {
     try {
-      const response = await axios.get('https://dummyjson.com' + RECIPES_API);
+      const response = await axios.get(Config.BASE_URL + RECIPES_API);
       if (response.status === 200) {
         setRecipes(response.data.recipes);
       } else {

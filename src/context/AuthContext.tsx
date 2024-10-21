@@ -2,12 +2,17 @@ import React, {createContext, useState, useEffect, ReactNode} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import Config from 'react-native-config';
-import {LOGIN_API} from '../constants/endpoints';
+import {LOGIN_API, GET_USER_API} from '../constants/endpoints';
 
 // Define the type for user data
 interface User {
   id: string;
   username: string;
+  firstName?: string;
+  lastName: string;
+  email?: string;
+  image?: string;
+  gender?: string;
 }
 
 // Define the AuthContext type
@@ -20,6 +25,7 @@ interface AuthContextType {
     password: string,
   ) => Promise<{success: boolean; message?: string}>;
   logout: () => Promise<void>;
+  getUserInfo: () => Promise<void>;
 }
 
 // Create the AuthContext with default values
@@ -29,6 +35,7 @@ export const AuthContext = createContext<AuthContextType>({
   token: null,
   login: async () => ({success: false}),
   logout: async () => {},
+  getUserInfo: async () => {},
 });
 
 // AuthProvider component to wrap around your app
@@ -60,7 +67,7 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
   // Login method
   const login = async (username: string, password: string) => {
     try {
-      const response = await axios.post('https://dummyjson.com' + LOGIN_API, {
+      const response = await axios.post(Config.BASE_URL + LOGIN_API, {
         username,
         password,
         expiresInMins: 30, // Optional
@@ -101,8 +108,30 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
     await AsyncStorage.removeItem('user');
   };
 
+  // Get user info method
+  const getUserInfo = async () => {
+    try {
+      if (token) {
+        const response = await axios.get(Config.BASE_URL + GET_USER_API, {
+          headers: {Authorization: `Bearer ${token}`},
+        });
+
+        if (response.status === 200) {
+          const userData = response.data;
+
+          // Update state and store the new user info
+          setUser(userData);
+          await AsyncStorage.setItem('user', JSON.stringify(userData));
+        }
+      }
+    } catch (error) {
+      console.log('Error fetching user info:', error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{isAuthenticated, user, token, login, logout}}>
+    <AuthContext.Provider
+      value={{isAuthenticated, user, token, login, logout, getUserInfo}}>
       {children}
     </AuthContext.Provider>
   );

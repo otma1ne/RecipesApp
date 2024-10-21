@@ -4,21 +4,21 @@ import fonts from '../../../theme/fonts';
 import colors from '../../../theme/colors';
 
 interface InfoItemProps {
-  icon: React.FC<SvgProps>;
-  iconColor: string;
-  label: string;
-  value: number | string | undefined;
+  icon?: React.FC<SvgProps>; // Optional
+  iconColor?: string; // Optional
+  label?: string; // Optional
+  value?: number | string; // Optional
 }
 
 export default function InfoItem({
   icon: Icon,
-  iconColor,
-  label,
-  value,
+  iconColor = colors.primary,
+  label = 'N/A',
+  value = 'N/A',
 }: InfoItemProps) {
   return (
     <View style={styles.item}>
-      <Icon width={26} height={26} stroke={iconColor} />
+      {Icon && <Icon width={26} height={26} stroke={iconColor} />}
       <Text style={styles.value}>{value}</Text>
       <Text style={styles.label}>{label}</Text>
     </View>

@@ -5,6 +5,7 @@ import {Alert} from 'react-native';
 import {Recipe} from '../home/useHome';
 import {useDispatch} from 'react-redux';
 import {saveRecipe} from '../../redux/slices/savedRecipesSlice';
+import Config from 'react-native-config';
 
 const useDetail = (route: any) => {
   const {recipeId} = route.params;
@@ -16,7 +17,7 @@ const useDetail = (route: any) => {
   const fetchRecipe = async () => {
     try {
       const response = await axios.get(
-        'https://dummyjson.com' + RECIPES_API + '/' + recipeId,
+        Config.BASE_URL + RECIPES_API + '/' + recipeId,
       );
       if (response.status === 200) {
         setRecipe(response.data);

@@ -1,13 +1,31 @@
 import React, {useContext} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Alert,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Alert, TouchableOpacity, StyleSheet} from 'react-native';
 import {AuthContext} from '../../context/AuthContext';
+import Ionicons from 'react-native-vector-icons/Ionicons'; 
+import colors from '../../theme/colors';
+import constants from '../../theme/constants';
+import fonts from '../../theme/fonts';
+
+interface SettingItemProps {
+  icon: string;
+  label: string;
+  onPress: () => void;
+}
+
+// Reusable component for each setting item
+function SettingItem({icon, label, onPress}: SettingItemProps) {
+  return (
+    <TouchableOpacity style={styles.listItem} onPress={onPress}>
+      <Ionicons
+        name={icon}
+        size={24}
+        color={colors.primary}
+        style={styles.icon}
+      />
+      <Text style={styles.itemText}>{label}</Text>
+    </TouchableOpacity>
+  );
+}
 
 export default function SettingsScreen() {
   const {logout} = useContext(AuthContext);
@@ -36,11 +54,30 @@ export default function SettingsScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
 
-      {/* Other settings options can go here */}
+      {/* List of setting items */}
+      <SettingItem
+        icon="settings-outline"
+        label="Settings"
+        onPress={() => {}}
+      />
+      <SettingItem icon="help-circle-outline" label="FAQ" onPress={() => {}} />
+      <SettingItem
+        icon="information-circle-outline"
+        label="About"
+        onPress={() => {}}
+      />
+      <SettingItem
+        icon="lock-closed-outline"
+        label="Privacy Policy"
+        onPress={() => {}}
+      />
 
-      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <Text style={styles.logoutText}>Logout</Text>
-      </TouchableOpacity>
+      {/* Logout item */}
+      <SettingItem
+        icon="log-out-outline"
+        label="Logout"
+        onPress={handleLogout}
+      />
     </View>
   );
 }
@@ -48,28 +85,28 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-    // justifyContent: 'center', // Optionally center the content
+    padding: constants.padding,
+    backgroundColor: colors.white,
   },
   title: {
-    fontSize: 32,
-    marginBottom: 40,
-    alignSelf: 'center',
-    fontWeight: 'bold',
-    color: '#FF3B30', // A red color to indicate logout
+    fontSize: 24,
+    fontFamily: fonts.semiBold,
+    color: colors.secondary,
+    marginBottom: 24,
   },
-  logoutButton: {
-    backgroundColor: '#FF3B30',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 8,
-    alignSelf: 'center',
-    marginTop: 20,
+  listItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.greyLighter,
   },
-  logoutText: {
-    color: '#fff',
+  icon: {
+    marginRight: 16,
+  },
+  itemText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: fonts.regular,
+    color: colors.black,
   },
 });

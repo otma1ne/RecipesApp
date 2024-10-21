@@ -18,6 +18,7 @@ import SearchIcon from '../../assets/icons/search.svg';
 import BurgerMenu from '../../assets/icons/burger-menu.svg';
 import useHome, {Category, Chef, Recipe} from './useHome';
 import RecipeCard from './components/RecipeCard';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function HomeScreen({navigation}: any) {
   const {
@@ -84,13 +85,13 @@ export default function HomeScreen({navigation}: any) {
       {/* App Bar */}
       <View style={styles.appBar}>
         <TouchableOpacity style={styles.searchIcon} onPress={openSettings}>
-          <BurgerMenu width={32} height={32} stroke={colors.secondary} />
+          <BurgerMenu width={32} height={32} stroke={colors.primary} />
         </TouchableOpacity>
         <View style={styles.logoContainer}>
           <Image source={assets.logo} style={styles.logo} />
         </View>
         <View style={styles.searchIcon}>
-          <SearchIcon width={22} height={22} stroke={colors.secondary} />
+          <Ionicons name="search" size={24} color={colors.primary} />
         </View>
       </View>
 
@@ -137,7 +138,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 60,
-    height: 30,
+    height: 45,
+    resizeMode: 'contain',
   },
   searchIcon: {
     width: 30,
