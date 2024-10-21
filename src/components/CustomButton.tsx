@@ -3,6 +3,7 @@ import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import colors from '../theme/colors';
 import theme from '../theme';
 import constants from '../theme/constants';
+import fonts from '../theme/fonts';
 
 const CustomButton = ({title, onPress, style, textStyle, ...props}: any) => {
   return (
@@ -24,7 +25,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    ...theme.text14Bold,
+    fontSize: 15,
+    fontFamily: fonts.semiBold,
   },
 });
 

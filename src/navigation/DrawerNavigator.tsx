@@ -1,10 +1,5 @@
-// DrawerNavigator.js
-
 import React from 'react';
-import {
-  createDrawerNavigator,
-  DrawerNavigationOptions,
-} from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Import navigators and screens
@@ -18,9 +13,10 @@ export default function DrawerNavigator() {
   return (
     <Drawer.Navigator
       initialRouteName="HomeTabs"
-      screenOptions={({route}: any) => ({
+      screenOptions={({route}) => ({
         headerShown: false, // Hide headers in drawer
-        drawerIcon: ({focused, color, size}: any) => {
+        drawerType: 'slide', // Set the drawer to slide
+        drawerIcon: ({focused, color, size}) => {
           let iconName = 'home'; // Default icon
 
           if (route.name === 'HomeTabs') {

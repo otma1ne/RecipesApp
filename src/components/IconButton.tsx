@@ -1,7 +1,8 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, ViewStyle, TextStyle} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons'; // Import a specific icon set
+import Ionicons from 'react-native-vector-icons/FontAwesome5';
 import colors from '../theme/colors';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 type IconButtonProps = {
   icon: string;
@@ -26,7 +27,12 @@ const IconButton = ({
       style={[styles.button, style]}
       onPress={onPress}
       {...props}>
-      <Ionicons name={icon} size={size} color={color} style={iconStyle} />
+      <FontAwesome5Icon
+        name={icon}
+        size={size}
+        color={color}
+        style={iconStyle}
+      />
     </TouchableOpacity>
   );
 };
